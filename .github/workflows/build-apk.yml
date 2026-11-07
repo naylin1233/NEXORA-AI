@@ -28,7 +28,9 @@ jobs:
 
       - name: Create Android project
         run: flutter create --platforms=android --project-name nexora_ai .
-
+      - name: Set Android compile SDK
+        run: |
+          sed -i -E 's/^[[:space:]]*compileSdk[[:space:]]*=.*/    compileSdk = 36/' android/app/build.gradle.kts
       - name: Add Internet Permission
         run: |
           python3 - <<'PY'
